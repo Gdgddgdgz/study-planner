@@ -3,11 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import icons from './icons';
 import { useAuth } from '../context/AuthContext';
 
-const { LayoutDashboard, CheckSquare, Book, Folder, Timer, BrainCircuit, Settings, BookOpen, LogOut, X } = icons;
+const { LayoutDashboard, CheckSquare, Book, Folder, Timer, BookOpen, LogOut } = icons;
 
 const navItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
-  { icon: CheckSquare, label: 'Tasks', path: '/tasks', badge: '5' },
+  { icon: CheckSquare, label: 'Tasks', path: '/tasks' },
   { icon: Book, label: 'Subjects', path: '/subjects' },
   { icon: Folder, label: 'Notes', path: '/notes' },
   { icon: Timer, label: 'Study Session', path: '/study-session' },  
@@ -50,14 +50,6 @@ export default function Sidebar({ isOpen, onClose }) {
         <div className="sidebar-logo">
           <div className="logo-icon"><BookOpen size={21} strokeWidth={2.2} /></div>
           <span className="logo-text">StudyFlow</span>
-          {/* Close button on mobile */}
-          <button
-            className="sidebar-close-btn"
-            onClick={onClose}
-            aria-label="Close menu"
-          >
-            <X size={18} />
-          </button>
         </div>
 
         <nav className="sidebar-nav">
@@ -74,15 +66,6 @@ export default function Sidebar({ isOpen, onClose }) {
               {badge && <span className="nav-badge">{badge}</span>}
             </Link>
           ))}
-          <span className="nav-section-label">Account</span>
-          <button
-            onClick={handleLogout}
-            className="nav-item"
-            style={{ width: '100%', background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', fontFamily: 'inherit' }}
-          >
-            {LogOut ? <LogOut /> : <Settings />}
-            <span>Logout</span>
-          </button>
         </nav>
 
         <div className="sidebar-footer">
@@ -97,6 +80,16 @@ export default function Sidebar({ isOpen, onClose }) {
               </div>
             </div>
           </div>
+          <button
+            type="button"
+            className="sidebar-logout-btn"
+            onClick={handleLogout}
+            aria-label="Logout"
+            title="Logout"
+          >
+            <LogOut />
+            <span>Logout</span>
+          </button>
         </div>
       </aside>
     </>

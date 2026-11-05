@@ -8,13 +8,13 @@ export default function Topbar({ title, onAddClick, onMenuClick }) {
     <header className="topbar">
       <div className="topbar-left">
         {/* Hamburger — only shows on mobile */}
-        <button
+        {/* <button
           className="hamburger-btn"
           onClick={onMenuClick}
           aria-label="Open sidebar menu"
         >
           <Menu size={22} />
-        </button>
+        </button> */}
         <h1 className="page-title">{title}</h1>
       </div>
       <div className="topbar-right">
